@@ -1,0 +1,16 @@
+.app-area {
+    margin-top: 50px;
+}
+
+.pane-active {
+    transition: opacity 1s ease-in;
+    opacity: 1;
+    height: auto;
+}
+
+.pane-inactive {
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
