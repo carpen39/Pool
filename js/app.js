@@ -8,7 +8,10 @@ $(document).ready(function () {
     updateLeaderboard('normal');
 
     var hash = window.location.hash.substring(1);
-    updateAppLocation('#' + hash);
+
+    if (hash != null && hash != "") {
+        updateAppLocation('#' + hash);
+    }
 
     //Update current pane on nav click
     $('.navbar a').click(function () {
