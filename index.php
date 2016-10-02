@@ -108,13 +108,12 @@ if (!isset($_SESSION["current_game"])) {
             <div class="row">
                 <div class="form-group">
                     <label for="playerName">Name Of Player</label>
-                    <input type="email" class="form-control" id="playerName" aria-describedby="playerName" placeholder="Enter the player's full name">
-                    <small id="emailHelp" class="form-text text-muted"></small>
+                    <input type="text" class="form-control" id="playerName" aria-describedby="playerName" placeholder="Enter the player's full name">
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <button type="submit" class="btn btn-primary btn-lg" onclick="submitNewPlayer()">Add</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="submitNewPlayer()">Add</button>
                 </div>
             </div>
         </form>
