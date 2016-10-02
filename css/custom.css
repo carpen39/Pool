@@ -1,5 +1,35 @@
+body {
+    background-color: #1ABC9C;
+}
+
+.navbar {
+    background-color: #16A085;
+}
+
+
+.navbar-inverse .navbar-collapse {
+    border-color: #16A085;
+}
+
 .app-area {
-    margin-top: 50px;
+    margin-top: 100px;
+    background-color: #1ABC9C;
+    margin-bottom: 100px;
+}
+
+th[scope="row"] {
+    display: none;
+}
+
+.pane {
+    background-color: #ECF0F1;
+    padding: 15px;
+    border-radius: 15px !important;
+}
+
+.row {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
 }
 
 .pane-active {
@@ -13,4 +43,11 @@
     opacity: 0;
     height: 0;
     overflow: hidden;
+    padding: 0px !important;
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:hover,
+.nav-pills>li.active>a:focus {
+    background-color: #1ABC9C;
 }

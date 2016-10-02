@@ -47,6 +47,11 @@ function updateAppLocation(location) {
 
         $(location).removeClass("pane-inactive");
         $(location).addClass("pane-active");
+
+        $('#navbar').removeClass("in");
+
+        //scroll to top
+        $("html, body").animate({ scrollTop: 0 }, "slow");
     }
 }
 

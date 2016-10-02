@@ -17,7 +17,12 @@ if (!isset($_SESSION["current_game"])) {
     <title>Let's Play Pool</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+    <link href="dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="dist/css/flat-ui.css" rel="stylesheet">
 
     <!-- My custom css -->
     <link href="css/custom.css" rel="stylesheet">
@@ -70,7 +75,7 @@ if (!isset($_SESSION["current_game"])) {
                 <table id="leaderboardList" class="table table-hover">
                     <thead>
                     <tr>
-                        <th>#</th>
+                        <th scope="row">#</th>
                         <th>Name</th>
                         <th>Number of Wins</th>
                         <th>Number of Games</th>
@@ -133,7 +138,7 @@ if (!isset($_SESSION["current_game"])) {
                 <table id="playerList" class="table table-hover">
                     <thead>
                     <tr>
-                        <th>#</th>
+                        <th scope="row">#</th>
                         <th>Name</th>
                         <th>Number of Wins</th>
                         <th>Number of Games</th>
