@@ -290,7 +290,7 @@ var Backend = {
 
     request : function (action, data) {
         return $.ajax({
-            url: "/Pool/Backend/Server.php",
+            url: "/Pool/backend/Server.php",
             data: { action: action, data: JSON.stringify(data) },
             async: true,
             dataType: "json"

@@ -19,10 +19,10 @@ if (!isset($_SESSION["current_game"])) {
     <!-- Bootstrap -->
     <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
 
-    <link href="dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Loading Flat UI -->
-    <link href="dist/css/flat-ui.css" rel="stylesheet">
+    <link href="css/flat-ui.css" rel="stylesheet">
 
     <!-- My custom css -->
     <link href="css/custom.css" rel="stylesheet">
