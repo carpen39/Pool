@@ -30,7 +30,7 @@ class DAL {
 
         if ($conn != null) {
             // prepare and bind
-            $stmt = $conn->prepare("INSERT INTO Players (Name, NumberOfWins, NumberOfGames, ELOScore) VALUES (?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO players (Name, NumberOfWins, NumberOfGames, ELOScore) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("siii", $name, $numberOfWins, $numberOfGames, $eloScore);
 
             $name = $_name;
@@ -53,7 +53,7 @@ class DAL {
 
         if ($conn != null) {
             // prepare and bind
-            $stmt = $conn->prepare("Update Players set Name = ?, NumberOfWins = ? , NumberOfGames = ? , ELOScore = ? Where Id = ?");
+            $stmt = $conn->prepare("Update players set Name = ?, NumberOfWins = ? , NumberOfGames = ? , ELOScore = ? Where Id = ?");
             $stmt->bind_param("siiii", $name, $numberOfWins, $numberOfGames, $eloScore, $id);
 
             $name = $_name;
@@ -73,7 +73,7 @@ class DAL {
 
         if ($conn != null) {
             // prepare and bind
-            $stmt = $conn->prepare("Select * From Players Where Id = ?");
+            $stmt = $conn->prepare("Select * From players Where Id = ?");
             $stmt->bind_param("i", $id);
 
             $id = $_id;
@@ -101,9 +101,9 @@ class DAL {
         if ($conn != null) {
             // prepare and bind
             if ($isRanked) {
-                $stmt = $conn->prepare("Select * From Players Order By ELOScore Desc");
+                $stmt = $conn->prepare("Select * From players Order By ELOScore Desc");
             } else {
-                $stmt = $conn->prepare("Select * From Players Order By NumberOfWins Desc");
+                $stmt = $conn->prepare("Select * From players Order By NumberOfWins Desc");
             }
 
             $stmt->execute();
@@ -129,7 +129,7 @@ class DAL {
 
         if ($conn != null) {
             // prepare and bind
-            $stmt = $conn->prepare("Select * From Players");
+            $stmt = $conn->prepare("Select * From players");
             $stmt->execute();
 
             $result = $stmt->get_result();

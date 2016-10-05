@@ -28,6 +28,12 @@ $(document).ready(function () {
         //game is in progress. Load it and display it.
         var game = JSON.parse(currentGame);
 
+        if (game.__PHP_Incomplete_Class_Name == "NormalGame") {
+            $('#gameTitle').html("Normal Game");
+        } else {
+            $('#gameTitle').html("Ranked Game");
+        }
+
         for (var i = 0; i < game.players.length; i++) {
             var player = game.players[i];
             addPlayerToGameInProgress(player);
@@ -188,12 +194,26 @@ function addPlayerToGame(player) {
         $('#player1').html(html);
         $('#player1Game').html(html);
     } else if (playerId2 == null) {
-        playerId2 = player.id;
-        $('#player2').html(html);
-        $('#player2Game').html(html);
+        if (player.id == playerId1) {
+            displayError("This player has already been added to the game.");
+        } else {
+            playerId2 = player.id;
+            $('#player2').html(html);
+            $('#player2Game').html(html);
+        }
     } else {
         //player slots are full
     }
+}
+
+function displayError(errorMessage) {
+    $('#errorMessage').html(errorMessage);
+    $('#errorModal').modal('show');
+}
+
+function displaySuccess(successMessage) {
+    $('#successMessage').html(successMessage);
+    $('#successModal').modal('show');
 }
 
 function addPlayerToGameInProgress(player) {
@@ -217,20 +237,26 @@ function addPlayerToGameInProgress(player) {
         $('#player1').html(html);
         $('#player1Game').html(html);
     } else if (playerId2 == null) {
-        playerId2 = player.id;
-        $('#player2').html(html);
-        $('#player2Game').html(html);
+            playerId2 = player.id;
+            $('#player2').html(html);
+            $('#player2Game').html(html);
     } else {
         //player slots are full
+        displayError("Both player slots hare already reserved.");
     }
 }
 
 function submitNewPlayer() {
     var name = $('#playerName').val();
 
-    Backend.addNewPlayer(name).done(function( data ) {
-        $('#playerName').val("");
-    });
+    if (name == null || name.trim() == "") {
+        displayError("Please enter a name for the player to be created.");
+    } else {
+        Backend.addNewPlayer(name).done(function (data) {
+            displaySuccess("The player has been created successfully.");
+            $('#playerName').val("");
+        });
+    }
 }
 
 function updateLeaderboard(type) {
@@ -290,7 +316,7 @@ var Backend = {
 
     request : function (action, data) {
         return $.ajax({
-            url: "/Pool/backend/Server.php",
+            url: "backend/Server.php",
             data: { action: action, data: JSON.stringify(data) },
             async: true,
             dataType: "json"

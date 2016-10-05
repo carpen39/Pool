@@ -1,4 +1,7 @@
 <?php
+error_reporting(-1);
+ini_set('display_errors', 'On');
+
 require_once "Player.php";
 require_once "Game.php";
 //require_once "Matchmaking.php";
