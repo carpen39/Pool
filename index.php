@@ -72,36 +72,38 @@ if (!isset($_SESSION["current_game"])) {
                 </ul>
             </div>
             <div class="row">
-                <table id="leaderboardList" class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="row">#</th>
-                        <th>Name</th>
-                        <th>Number of Wins</th>
-                        <th>Number of Games</th>
-                        <th>Ranking</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td> </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="leaderboardList" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="row">#</th>
+                            <th>Name</th>
+                            <th>Number of Wins</th>
+                            <th>Number of Games</th>
+                            <th>Ranking</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td> </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -135,36 +137,38 @@ if (!isset($_SESSION["current_game"])) {
                 </ul>
             </div>
             <div class="row">
-                <table id="playerList" class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="row">#</th>
-                        <th>Name</th>
-                        <th>Number of Wins</th>
-                        <th>Number of Games</th>
-                        <th>Ranking</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td> </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="playerList" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="row">#</th>
+                            <th>Name</th>
+                            <th>Number of Wins</th>
+                            <th>Number of Games</th>
+                            <th>Ranking</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td> </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">

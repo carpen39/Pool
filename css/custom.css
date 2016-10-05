@@ -21,6 +21,10 @@ th[scope="row"] {
     display: none;
 }
 
+.tableOverflow {
+    overflow-x: scroll;
+}
+
 .pane {
     background-color: #ECF0F1;
     padding: 15px;
@@ -89,6 +93,10 @@ th[scope="row"] {
     .pane {
         padding: 5px;
         margin: 10px;
+    }
+
+    h1 {
+        font-size: 55px; !important;
     }
 }
 
