@@ -2,39 +2,39 @@
 
 class Player {
     public $id = null;
-    public $name;
-    public $numberOfWins;
-    public $numberOfGames;
-    public $eloScore;
+    public $Name;
+    public $NumberOfWins;
+    public $NumberOfGames;
+    public $ELOScore;
 
     public function insert() {
-        $this->id = DAL::InsertPlayer($this->name, $this->numberOfWins, $this->numberOfGames, $this->eloScore);
+        $this->id = DAL::InsertPlayer($this->Name, $this->NumberOfWins, $this->NumberOfGames, $this->ELOScore);
         return $this;
     }
 
     public function save() {
         if ($this->id != null) {
-            DAL::UpdatePlayer($this->id, $this->name, $this->numberOfWins, $this->numberOfGames, $this->eloScore);
+            DAL::UpdatePlayer($this->id, $this->Name, $this->NumberOfWins, $this->NumberOfGames, $this->ELOScore);
         } else {
             //Player doesn't have an id, must not be inserted in DB yet.
         }
     }
 
     public function addWin() {
-        $this->numberOfWins++;
-        $this->numberOfGames++;
+        $this->NumberOfWins++;
+        $this->NumberOfGames++;
 
         $this->save();
     }
 
     public function addLoss() {
-        $this->numberOfGames++;
+        $this->NumberOfGames++;
 
         $this->save();
     }
 
     public function updateELO($newScore) {
-        $this->eloScore = $newScore;
+        $this->ELOScore = $newScore;
 
         $this->save();
     }
@@ -44,10 +44,10 @@ class Player {
 
         $player = new Player();
         $player->id = $data[0]["id"];
-        $player->name = $data[0]["Name"];
-        $player->numberOfWins = $data[0]["NumberOfWins"];
-        $player->numberOfGames = $data[0]["NumberOfGames"];
-        $player->eloScore = $data[0]["ELOScore"];
+        $player->Name = $data[0]["Name"];
+        $player->NumberOfWins = $data[0]["NumberOfWins"];
+        $player->NumberOfGames = $data[0]["NumberOfGames"];
+        $player->ELOScore = $data[0]["ELOScore"];
 
         return $player;
     }

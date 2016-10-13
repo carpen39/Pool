@@ -1,10 +1,6 @@
 <?php
 // Start the session
 session_start();
-
-if (!isset($_SESSION["current_game"])) {
-    $_SESSION["current_game"] = null;
-}
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +11,12 @@ if (!isset($_SESSION["current_game"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Let's Play Pool</title>
+
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/pubsubjs/1.4.2/pubsub.min.js"></script>
 
     <!-- Bootstrap -->
     <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
@@ -62,180 +64,15 @@ if (!isset($_SESSION["current_game"])) {
 
 <div class="app-area">
     <div id="leaderboards" class="pane container pane-inactive">
-        <div class="row">
-            <div class="row">
-                <h1>Leaderboards</h1>
-                <hr/>
-                <ul class="nav nav-pills nav-justified">
-                    <li id="normal-leaderboard" role="presentation" class="active"><a href="javascript:updateLeaderboard('normal')">Normal</a></li>
-                    <li id="ranked-leaderboard" role="presentation"><a href="javascript:updateLeaderboard('ranked')">Ranked</a></li>
-                </ul>
-            </div>
-            <div class="row">
-                <div class="table-responsive">
-                    <table id="leaderboardList" class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="row">#</th>
-                            <th>Name</th>
-                            <th>Number of Wins</th>
-                            <th>Number of Games</th>
-                            <th>Ranking</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td> </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <script type="text/babel" src="js/Leaderboard.js"></script>
     </div>
 
     <div id="add-player" class="pane container pane-inactive">
-        <form>
-            <h1>Add Player</h1>
-            <hr/>
-            <div class="row">
-                <div class="form-group">
-                    <label for="playerName">Name Of Player</label>
-                    <input type="text" class="form-control" id="playerName" aria-describedby="playerName" placeholder="Enter the player's full name">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <button type="button" class="btn btn-primary btn-lg" onclick="submitNewPlayer()">Add</button>
-                </div>
-            </div>
-        </form>
+        <script type="text/babel" src="js/AddPlayer.js"></script>
     </div>
 
     <div id="game" class="pane container pane-active">
-        <div id="gamePreparing" class="pane-active">
-            <div class="row">
-                <h1>Start A Game</h1>
-                <hr/>
-                <ul class="nav nav-pills nav-justified">
-                    <li id="normal-game" role="presentation" class="active"><a href="javascript:changeGameType('normal')">Normal</a></li>
-                    <li id="ranked-game" role="presentation"><a href="javascript:changeGameType('ranked')">Ranked</a></li>
-                </ul>
-            </div>
-            <div class="row">
-                <div class="table-responsive">
-                    <table id="playerList" class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="row">#</th>
-                            <th>Name</th>
-                            <th>Number of Wins</th>
-                            <th>Number of Games</th>
-                            <th>Ranking</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td> </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class='page-header'>
-                        <div class='btn-toolbar pull-right'>
-                            <div class='btn-group'>
-                                <button type='button' class='btn btn-danger' onclick="removePlayer(1);">Remove</button>
-                            </div>
-                        </div>
-                        <h2>Player 1</h2>
-                        <div id="player1" class="well">
-                            Add player 1 by selecting a player in the table above.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class='page-header'>
-                        <div class='btn-toolbar pull-right'>
-                            <div class='btn-group'>
-                                <button type='button' class='btn btn-danger' onclick="removePlayer(2);">Remove</button>
-                            </div>
-                        </div>
-                        <h2>Player 2</h2>
-                        <div id="player2" class="well">
-                            Add player 2 by selecting a player in the table above.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <button type="button" class="btn btn-primary btn-lg" onclick="startGame();">Start Game</button>
-                </div>
-            </div>
-        </div>
-        <div id="gameInProgress" class="pane-inactive">
-            <div class="row">
-                <h1 id="gameTitle">Current Game</h1>
-                <hr/>
-            </div>
-            <div class="col-lg-6">
-                <div class='page-header'>
-                    <div class='btn-toolbar pull-right'>
-                        <div class='btn-group'>
-                            <button type='button' class='btn btn-primary' onclick="declareGameWinner(1);">Winner</button>
-                        </div>
-                    </div>
-                    <h2>Player 1</h2>
-                    <div id="player1Game" class="well">
-                        Add player 2 by selecting a player in the table above.
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class='page-header'>
-                    <div class='btn-toolbar pull-right'>
-                        <div class='btn-group'>
-                            <button type='button' class='btn btn-primary' onclick="declareGameWinner(2);">Winner</button>
-                        </div>
-                    </div>
-                    <h2>Player 2</h2>
-                    <div id="player2Game" class="well">
-                        Add player 2 by selecting a player in the table above.
-                    </div>
-                </div>
-            </div>
-        </div>
+        <script type="text/babel" src="js/Game.js"></script>
     </div>
 </div>
 

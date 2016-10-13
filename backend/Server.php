@@ -42,10 +42,10 @@ class Server
     private function createPlayer($data) {
         $player = new Player();
 
-        $player->name = $data->name;
-        $player->numberOfWins = 0;
-        $player->numberOfGames = 0;
-        $player->eloScore = 1500;
+        $player->Name = $data->name;
+        $player->NumberOfWins = 0;
+        $player->NumberOfGames = 0;
+        $player->ELOScore = 1500;
 
         $player->insert();
 
@@ -80,6 +80,14 @@ class Server
             $_SESSION["current_game"] = null;
 
             print json_encode(array());
+        }
+    }
+
+    private function getCurrentGame($data) {
+        if (isset($_SESSION["current_game"])) {
+            print json_encode($_SESSION["current_game"]);
+        } else {
+            print json_encode(null);
         }
     }
 
